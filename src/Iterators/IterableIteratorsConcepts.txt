@@ -1,0 +1,8 @@
+In Java an iterator is an object that allows a programmer to traverse all the elements of a collection.
+
+1. Most importanthe point of using an iterator is to allow the the client to iterate over the collection of objects, without exposing implementation details. 
+This gives you the benefit to change what collection the Iterator iterates over and how each element is served, without making any change the client's code.
+
+For e.g we could have a BookCollection implemented using an ARrayList or HashSet or whatever, We don't want client to have this knowledge.
+
+

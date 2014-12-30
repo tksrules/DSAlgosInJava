@@ -1,0 +1,13 @@
+/build/
+/bin/
+target/
+ 
+.DS_Store
+ 
+*.class
+ 
+*.jar
+*.war
+*.ear
+*.db
+
