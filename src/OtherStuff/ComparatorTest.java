@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class ComparatorTest {
-    public static void main(final String[] args) {
+    @SuppressWarnings("unchecked")
+	public static void main(final String[] args) {
         final Rect rect1 = new Rect(5, 4);
         final Rect rect2 = new Rect(3, 4);
         final Rect rect3 = new Rect(3, 11);
