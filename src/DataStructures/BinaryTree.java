@@ -26,6 +26,23 @@ public class BinaryTree {
         preOrderRecursive(x.right);
     }
 
+    public void preOrderIterative() {
+        final Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode x = tn;
+
+        while (x != null || !stack.isEmpty()) {
+            if (x != null) {
+                System.out.print(x.val + "->");
+                if (x.right != null) {
+                    stack.push(x.right);
+                }
+                x = x.left;
+            } else {
+                x = stack.pop();
+            }
+        }
+    }
+
     public void InOrderRecursive(final TreeNode x) {
         if (x == null) {
             return;
@@ -35,34 +52,51 @@ public class BinaryTree {
         InOrderRecursive(x.right);
     }
 
-    public void preOrderIterative() {
+    public void InOrderIterative() {
         final Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.push(tn);
+        TreeNode x = tn;
 
-        while (!stack.isEmpty()) {
-            final TreeNode x = stack.pop();
-            System.out.print(x.val + "->");
-            if (x.right != null) {
-                stack.push(x.right);
-            }
-            if (x.left != null) {
-                stack.push(x.left);
+        while (x != null || !stack.isEmpty()) {
+            if (x != null) {
+                stack.push(x);
+                x = x.left;
+            } else {
+                x = stack.pop();
+                System.out.print(x.val + "->");
+                x = x.right;
             }
         }
     }
 
-    public void InOrderIterative() {
-        final Stack<TreeNode> stack = new Stack<TreeNode>();
-        stack.push(tn);
+    public void PostOrderRecursive(final TreeNode x) {
+        if (x == null) {
+            return;
+        }
+        PostOrderRecursive(x.left);
+        PostOrderRecursive(x.right);
+        System.out.print(x.val + "->");
+    }
 
-        while (!stack.isEmpty()) {
-            final TreeNode x = stack.pop();
-            System.out.print(x.val + "->");
-            if (x.right != null) {
-                stack.push(x.right);
-            }
-            if (x.left != null) {
-                stack.push(x.left);
+    public void PostOrderIterative() {
+        final Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode x = tn;
+
+        while (x != null || !stack.isEmpty()) {
+            if (x != null) {
+                stack.push(x);
+                if (x.right != null) {
+                    stack.push(x.right);
+                }
+                x = x.left;
+            } else {
+                x = stack.peek();
+                if (x.right == null) {
+                    x = stack.pop();
+                    System.out.print(x.val + "->");
+                    x = x.right;
+                } else {
+
+                }
             }
         }
     }
@@ -75,5 +109,9 @@ public class BinaryTree {
         tree.preOrderIterative();
         System.out.println();
         tree.InOrderRecursive(tn);
+        System.out.println();
+        tree.InOrderIterative();
+        System.out.println();
+        tree.PostOrderRecursive(tn);
     }
 }
