@@ -76,6 +76,6 @@ public class LinkedList {
 
     // merge two sorted linklists to one list
     public ListNode merge(final ListNode head1, final ListNode head2) {
-
+        return null;
     }
 }

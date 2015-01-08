@@ -6,15 +6,28 @@ public class BinaryTree {
     static TreeNode tn;
 
     public void createTree() {
-        tn = new TreeNode('F');
-        tn.left = new TreeNode('B');
-        tn.left.left = new TreeNode('A');
-        tn.left.right = new TreeNode('D');
-        tn.left.right.left = new TreeNode('C');
-        tn.left.right.right = new TreeNode('E');
-        tn.right = new TreeNode('G');
-        tn.right.right = new TreeNode('I');
-        tn.right.right.left = new TreeNode('H');
+        tn = new TreeNode(6);
+        tn.left = new TreeNode(2);
+        tn.left.left = new TreeNode(1);
+        tn.left.right = new TreeNode(4);
+        tn.left.right.left = new TreeNode(3);
+        tn.left.right.right = new TreeNode(5);
+        tn.right = new TreeNode(7);
+        tn.right.right = new TreeNode(9);
+        tn.right.right.left = new TreeNode(8);
+    }
+
+    public void createTree1() {
+        tn = new TreeNode(-10);
+        final TreeNode left1 = new TreeNode(-15);
+        final TreeNode left2 = new TreeNode(-25);
+        final TreeNode right1 = new TreeNode(-5);
+        final TreeNode right2 = new TreeNode(-3);
+
+        tn.left = left1;
+        left1.left = left2;
+        tn.right = right1;
+        right1.right = right2;
     }
 
     public void preOrderRecursive(final TreeNode x) {
@@ -101,6 +114,15 @@ public class BinaryTree {
         }
     }
 
+    // if only positive no.s in tree
+    public int getMaxSum(final TreeNode tn) {
+        if (tn == null) {
+            return 0;
+        } else {
+            return tn.val + Math.max(getMaxSum(tn.left), getMaxSum(tn.right));
+        }
+    }
+
     public static void main(final String[] args) {
         final BinaryTree tree = new BinaryTree();
         tree.createTree();
@@ -113,5 +135,12 @@ public class BinaryTree {
         tree.InOrderIterative();
         System.out.println();
         tree.PostOrderRecursive(tn);
+
+        final BinaryTree tree1 = new BinaryTree();
+        tree1.createTree1();
+        System.out.println();
+        tree1.InOrderRecursive(tn);
+        System.out.println("\nMax sum: " + tree1.getMaxSum(tn));
+
     }
 }

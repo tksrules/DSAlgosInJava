@@ -1,11 +1,11 @@
 package DataStructures;
 
 public class TreeNode {
-    char val;
+    int val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode(final char x) {
+    TreeNode(final int x) {
         val = x;
     }
 }
