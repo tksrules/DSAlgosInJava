@@ -18,11 +18,11 @@ public class BinaryTree {
     }
 
     public void createTree1() {
-        tn = new TreeNode(-10);
-        final TreeNode left1 = new TreeNode(-15);
-        final TreeNode left2 = new TreeNode(-25);
-        final TreeNode right1 = new TreeNode(-5);
-        final TreeNode right2 = new TreeNode(-3);
+        tn = new TreeNode(10);
+        final TreeNode left1 = new TreeNode(5);
+        final TreeNode left2 = new TreeNode(2);
+        final TreeNode right1 = new TreeNode(15);
+        final TreeNode right2 = new TreeNode(25);
 
         tn.left = left1;
         left1.left = left2;
@@ -123,6 +123,21 @@ public class BinaryTree {
         }
     }
 
+    // if both positive and -v no.s in tree
+    public int getMaxSum1(final TreeNode tn) {
+        if (tn == null) {
+            return Integer.MIN_VALUE;
+        } else {
+            final int left = getMaxSum1(tn.left);
+            final int right = getMaxSum1(tn.right);
+            int max = Math.max(left, right);
+            if (max == Integer.MIN_VALUE) {
+                max = 0;
+            }
+            return tn.val + max;
+        }
+    }
+
     public static void main(final String[] args) {
         final BinaryTree tree = new BinaryTree();
         tree.createTree();
@@ -141,6 +156,7 @@ public class BinaryTree {
         System.out.println();
         tree1.InOrderRecursive(tn);
         System.out.println("\nMax sum: " + tree1.getMaxSum(tn));
+        System.out.println("\nMax sum: " + tree1.getMaxSum1(tn));
 
     }
 }
